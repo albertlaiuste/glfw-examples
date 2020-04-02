@@ -10,7 +10,7 @@ file(GLOB_RECURSE SOURCE_FILES "src/*.cpp")
 #-------------------------------------------------------------------------------
 #	PROJECT SETTINGS
 #-------------------------------------------------------------------------------
-set(TARGET_NAME opengl-examples)
+set(TARGET_NAME glfw-examples)
 set(PROJECT_NAME ${TARGET_NAME})
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
