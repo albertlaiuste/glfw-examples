@@ -19,28 +19,34 @@ project(${PROJECT_NAME} LANGUAGES CXX)
 #-------------------------------------------------------------------------------
 #	GLFW SETTINGS
 #-------------------------------------------------------------------------------
-set(GLFWPath "glfw")
-set(GLFWIncludePath "glfw\\include")
+find_package(OpenGL REQUIRED)
+
+set(GLFWPath ${PROJECT_SOURCE_DIR}/glfw)
+set(GLEWPath ${PROJECT_SOURCE_DIR}/glew)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
 add_subdirectory(${GLFWPath})
-include_directories(${GLFWIncludePath})
-
-find_package(OpenGL REQUIRED)
+add_subdirectory(${GLEWPath}/build/cmake)
 #-------------------------------------------------------------------------------
 #	ADDITIONAL LIBRARIES
 #-------------------------------------------------------------------------------
 list(APPEND LIBRARIES
 OpenGL::GL
 glfw
+glew_s
 )
 #-------------------------------------------------------------------------------
 #	GENERATE EXECUTABLE
 #-------------------------------------------------------------------------------
 # Generate the executable
 add_executable(${TARGET_NAME} ${HEADER_FILES} ${SOURCE_FILES})
+# link include directories
+target_include_directories(${TARGET_NAME} PRIVATE
+    ${GLFWPath}/include
+    ${GLEWPath}/include
+)
 # link libraries
 target_link_libraries(${TARGET_NAME} ${LIBRARIES} ${GLFW_LIBRARIES})
