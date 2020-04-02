@@ -2,5 +2,5 @@
 	path = glfw
 	url = https://github.com/glfw/glfw
 [submodule "glew-cmake"]
-	path = glew-cmake
+	path = glew
 	url = https://github.com/Perlmint/glew-cmake
