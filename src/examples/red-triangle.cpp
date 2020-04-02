@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+namespace RedTriangle {
+
 static unsigned int compileShader(unsigned int type, const std::string& source)
 {
     auto id = glCreateShader(type);
@@ -125,4 +127,6 @@ int main(void)
 
     glfwTerminate();
     return 0;
+}
+
 }
